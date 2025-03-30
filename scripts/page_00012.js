@@ -1,0 +1,67 @@
+//=========================================
+// File name: page_NNNNN.js
+//-----------------------------------------
+// Project : QuizFaber 4.1.9
+// Licence : GNU General Public License v3.0
+// Author  : Luca Galli
+// Email   : info@quizfaber.com
+//-----------------------------------------
+// Script for NNNNN-th question
+//=========================================
+
+
+
+$(document).ready(function ()
+{
+	const questionIndex = 11;
+	const questionTime = 0;
+
+	PageLoad(questionIndex, questionTime);
+
+	
+});
+
+$(window).on("beforeunload", function ()
+{
+	PageUnload();
+	window.scrollTo(0, 0);
+});
+
+$(window).on("scroll", function ()
+{
+	PageOnScroll();
+});
+
+
+/* Code generated function */
+function InitQuestion12()
+{
+    const type = QMAKE_OPENANS;
+    const questionIndex = 11;
+    var weight = DecodeNumber('Tu1bEd+VU+8=', 1077, 0, 99999);
+    var numOfAnswers = 0;
+    var question = new Question(type, weight, numOfAnswers, DecodeDecimal('Tu1bEd+VU+8=', 1077, -1000, 1000),DecodeDecimal('3/EwSBI1X24=', 1077, -1000, 1000),DecodeDecimal('3/EwSBI1X24=', 1077, -1000, 1000));
+    question.num = 12;
+    question.answers.length = 0;
+    question.shortTextQuestion = "Trascrivi i primi 10 secondi di Video  ";
+    var comment = $('#comment' + questionIndex).val();
+    var answer = new Answer(0,0,1,0,comment);
+    question.answers.push(answer);
+    return question;
+
+}
+
+
+/* Code generated function */
+function ClearQuestion12()
+{
+    const questionIndex = 11;
+    ClearOpenAns(questionIndex);
+
+}
+
+
+
+
+
+
