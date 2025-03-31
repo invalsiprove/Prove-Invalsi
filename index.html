@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Prova Invalsi</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="Made with QuizFaber 4.1.9">
+    <meta name="generator" content="QuizFaber 4.1.9">
+    <meta name="keywords" content="quiz">
+    <meta name="description" content="Prova Invalsi">
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <!-- Script esterni -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js" defer></script>
+
+    <!-- Script locali -->
+    <script src="scripts/error.js" defer></script>
+    <script src="scripts/definitions.js" defer></script>
+    <script src="scripts/security.js" defer></script>
+    <script src="scripts/cookie.js" defer></script>
+    <script src="scripts/storage.js" defer></script>
+    <script src="scripts/time.js" defer></script>
+    <script src="scripts/valuation.js" defer></script>
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/utility.js" defer></script>
+    <script src="scripts/engine.js" defer></script>
+    <script src="scripts/view.js" defer></script>
+    <script src="scripts/login.js" defer></script>
+    <script src="scripts/recovery.js" defer></script>
+    <script src="scripts/page_index.js" defer></script>
+
+    <!-- CSS personalizzato -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/layout.css">
+
+</head>
+<body>
+    <div class="container">
+        <div id="loader"></div>
+
+        <div class="jumbotron qf-jumbotron-class" id="idQuizHeader">
+            <div class="row">
+                <div class="col-md-3" id="idQuizHeaderLogo">
+                    <div id="idQuizHeaderLogoImg"></div>
+                </div>
+                <div class="col-md-9" id="idQuizHeaderText">
+                    <h1 id="idQuizTitle"></h1>
+                    <p class="lead">
+                        <span id="idQuizDescription"></span>
+                    </p>
+                    <div id="idQuizProfile" style="display:none">
+                        <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#idQuizProfileInfo">
+                            Dettagli
+                        </button>
+                        <div id="idQuizProfileInfo" class="collapse">
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Autore</strong> <span class="float-end" id="idAuthor"></span></li>
+                                <li class="list-group-item"><strong>Argomento</strong> <span class="float-end" id="idArgument"></span></li>
+                                <li class="list-group-item"><strong>Organizzazione</strong> <span class="float-end" id="idCompany"></span></li>
+                                <li class="list-group-item"><strong>Data</strong> <span class="float-end" id="idDate"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pannello di login -->
+        <div class="panel panel-primary" id="loginPanelId">
+            <div class="panel-heading text-center" id="loginPanelHeaderId">Compila il modulo</div>
+
+            <div class="panel-body" id="loginFormId">
+                <div id="divSuccessI" class="alert alert-success alert-dismissible fade show" style="display:none">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <span id="idSuccessMsgI"></span>
+                </div>
+
+                <div id="divErrorI" class="alert alert-danger alert-dismissible fade show" style="display:none">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Errore!</strong> <span id="idErrorMsgI"></span>
+                </div>
+
+                <div id="divWarningI" class="alert alert-warning alert-dismissible fade show" style="display:none">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Attenzione!</strong> <span id="idWarningMsgI"></span>
+                </div>
+
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Inserisci la password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Inserisci il tuo nominativo:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Inserisci il tuo nominativo">
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary" id="loginBtnId" onclick="onLogin()">Inizia</button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <a href="registration.html">Non ancora registrato? Registrati</a>
+                </div>
+            </div>
+            <div class="panel-footer" id="idQuizFooter"><span id="idCopyrightMsg"></span></div>
+        </div>
+    </div>
+</body>
+</html>
