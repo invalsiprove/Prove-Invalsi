@@ -2,41 +2,47 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Prova Invalsi</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Author" content="Made with QuizFaber 4.1.9">
     <meta name="generator" content="QuizFaber 4.1.9">
     <meta name="keywords" content="quiz">
     <meta name="description" content="Prova Invalsi">
-    <title>Prova Invalsi</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap e jQuery (versioni aggiornate) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Librerie CryptoJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
 
-    <script src="scripts/error.js" defer></script>
-    <script src="scripts/definitions.js" defer></script>
-    <script src="scripts/security.js" defer></script>
-    <script src="scripts/cookie.js" defer></script>
-    <script src="scripts/storage.js" defer></script>
-    <script src="scripts/time.js" defer></script>
-    <script src="scripts/valuation.js" defer></script>
-    <script src="scripts/navigation.js" defer></script>
-    <script src="scripts/utility.js" defer></script>
-    <script src="scripts/engine.js" defer></script>
-    <script src="scripts/view.js" defer></script>
-    <script src="scripts/login.js" defer></script>
-    <script src="scripts/recovery.js" defer></script>
-    <script src="scripts/page_index.js" defer></script>
-
+    <!-- Fogli di stile -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/layout.css">
+
+    <!-- JavaScript -->
+    <script src="scripts/error.js"></script>
+    <script src="scripts/definitions.js"></script>
+    <script src="scripts/security.js"></script>
+    <script src="scripts/cookie.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/time.js"></script>
+    <script src="scripts/valuation.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/utility.js"></script>
+    <script src="scripts/engine.js"></script>
+    <script src="scripts/view.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/recovery.js"></script>
+    <script src="scripts/page_index.js"></script>
 </head>
 <body>
     <div class="container">
         <div id="loader"></div>
+
         <div class="jumbotron qf-jumbotron-class" id="idQuizHeader">
             <div class="row">
                 <div class="col-md-3" id="idQuizHeaderLogo">
@@ -47,42 +53,46 @@
                     <p class="lead">
                         <span id="idQuizDescription"></span>
                     </p>
-                    <div id="idQuizProfile" style="display:none">
+                    <p id="idQuizProfile" style="display:none">
                         <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#idQuizProfileInfo">Dettagli</button>
                         <div id="idQuizProfileInfo" class="collapse">
                             <ul class="list-group">
-                                <li class="list-group-item"><strong>Autore</strong> <span class="float-end" id="idAuthor"></span></li>
-                                <li class="list-group-item"><strong>Argomento</strong> <span class="float-end" id="idArgument"></span></li>
-                                <li class="list-group-item"><strong>Organizzazione o istituto</strong> <span class="float-end" id="idCompany"></span></li>
-                                <li class="list-group-item"><strong>Data</strong> <span class="float-end" id="idDate"></span></li>
+                                <li class="list-group-item"><strong>Autore:</strong> <span class="float-end" id="idAuthor"></span></li>
+                                <li class="list-group-item"><strong>Argomento:</strong> <span class="float-end" id="idArgument"></span></li>
+                                <li class="list-group-item"><strong>Organizzazione o istituto:</strong> <span class="float-end" id="idCompany"></span></li>
+                                <li class="list-group-item"><strong>Data:</strong> <span class="float-end" id="idDate"></span></li>
                             </ul>
                         </div>
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>
 
+        <!-- Pannello Login -->
         <div class="panel panel-primary" id="loginPanelId">
             <div class="panel-heading text-center" id="loginPanelHeaderId">Compila il modulo</div>
             <div class="panel-body" id="loginFormId">
-                <div id="divSuccessI" class="alert alert-success alert-dismissible fade in" style="display:none">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+                <!-- Messaggi di Errore, Successo e Avviso -->
+                <div id="divSuccessI" class="alert alert-success alert-dismissible fade show" style="display:none">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     <span id="idSuccessMsgI"></span>
                 </div>
-                <div id="divErrorI" class="alert alert-danger alert-dismissible fade in" style="display:none">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <div id="divErrorI" class="alert alert-danger alert-dismissible fade show" style="display:none">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     <strong>Errore!</strong> <span id="idErrorMsgI"></span>
                 </div>
-                <div id="divWarningI" class="alert alert-warning alert-dismissible fade in" style="display:none">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <div id="divWarningI" class="alert alert-warning alert-dismissible fade show" style="display:none">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     <strong>Attenzione!</strong> <span id="idWarningMsgI"></span>
                 </div>
 
+                <!-- Form di Login -->
                 <form class="form-horizontal">
                     <div class="form-group" id="idFieldEmail">
                         <label class="control-label col-sm-4" for="email" id="labelEmailId">Email:</label>
                         <div class="col-sm-4">
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                            <input type="email" class="form-control" id="email" placeholder="Inserisci email" name="email">
                         </div>
                     </div>
                     <div class="form-group" id="idFieldPassword">
@@ -92,9 +102,9 @@
                         </div>
                     </div>
                     <div class="form-group" id="idFieldName">
-                        <label class="control-label col-sm-4" for="name">Inserisci il tuo nominativo:</label>
+                        <label class="control-label col-sm-4" for="name">Nome:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="name" placeholder="Inserisci il tuo nominativo" name="name">
+                            <input type="text" class="form-control" id="name" placeholder="Inserisci il tuo nome" name="name">
                         </div>
                     </div>
                     <div class="form-group">
@@ -108,9 +118,6 @@
                         </div>
                     </div>
                 </form>
-                <div class="panel panel-default" id="engagementRulesPanelId" style="display:none">
-                    <div class="panel-body"></div>
-                </div>
             </div>
             <div class="panel-footer" id="idQuizFooter"><span id="idCopyrightMsg"></span></div>
         </div>
